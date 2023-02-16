@@ -6,17 +6,21 @@ package structures;
  */
 public final class StackBasedOnLinkedList extends BasedOnLinkedListDataStorage {
     @Override
+    public void add(int value) {
+        Node node = new Node(value);
+        if (first == null) {
+        } else {
+            node.next = first;
+        }
+        first = node;
+        size++;
+    }
+
+    @Override
     public int get() {
         if (size > 0) {
-            int res = last.value;
-            if (first == last) {
-                first = last = null;
-            } else {
-                Node temp = last;
-                last = last.prev;
-                last.next = null;
-                temp.prev = null;
-            }
+            int res = first.value;
+            first = first.next;
             size--;
             return res;
         } else
