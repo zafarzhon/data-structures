@@ -4,25 +4,22 @@ package structures;
  * @author Odilov_Zafarjon
  * @link https://t.me/zafarzhon_odilov
  */
-public abstract class BasedOnArrayDataStorage implements DataStorage{
+public abstract class BasedOnArrayDataStorage implements DataStorage {
     protected int[] array;
 
     protected int size;
 
-    public BasedOnArrayDataStorage(int size){
-        if(size>0){
+    public BasedOnArrayDataStorage(int size) {
+        if (size > 0) {
             array = new int[size];
-        }else
+        } else
             array = new int[5];
     }
 
-    public BasedOnArrayDataStorage() {
-        this(5);
-    }
 
     @Override
     public final void add(int value) {
-        if(size==array.length) grow(array.length==0?5:array.length*2);
+        if (size == array.length) grow(array.length == 0 ? 5 : array.length * 2);
         array[size++] = value;
     }
 
@@ -34,9 +31,9 @@ public abstract class BasedOnArrayDataStorage implements DataStorage{
         return size;
     }
 
-    private void grow(int newSize){
+    private void grow(int newSize) {
         int[] newArray = new int[newSize];
-        System.arraycopy(array,0,newArray,0,array.length);
+        System.arraycopy(array, 0, newArray, 0, array.length);
         array = newArray;
     }
 }

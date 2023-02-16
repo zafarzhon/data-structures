@@ -6,10 +6,7 @@ import javax.naming.SizeLimitExceededException;
  * @author Odilov_Zafarjon
  * @link https://t.me/zafarzhon_odilov
  */
-public class StackBasedOnArray extends BasedOnArrayDataStorage{
-    private int[] array;
-
-    private int size;
+public final class StackBasedOnArray extends BasedOnArrayDataStorage{
 
     public StackBasedOnArray(int size){
         super(size);
