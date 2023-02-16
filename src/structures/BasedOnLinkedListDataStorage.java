@@ -4,20 +4,21 @@ package structures;
  * @author Odilov_Zafarjon
  * @link https://t.me/zafarzhon_odilov
  */
-public abstract class BasedOnLinkedListDataStorage implements DataStorage{
+public abstract class BasedOnLinkedListDataStorage implements DataStorage {
     protected StackBasedOnLinkedList.Node first;
 
     protected StackBasedOnLinkedList.Node last;
     protected int size;
+
     @Override
     public final void add(int value) {
         StackBasedOnLinkedList.Node node = new StackBasedOnLinkedList.Node(value);
-        if(first==null){
+        if (first == null) {
             first = node;
-        }else if (first==last){
+        } else if (first == last) {
             first.next = node;
             node.prev = first;
-        }else{
+        } else {
             last.next = node;
             node.prev = last;
         }
@@ -33,12 +34,12 @@ public abstract class BasedOnLinkedListDataStorage implements DataStorage{
         return size;
     }
 
-    protected final static class Node{
+    protected final static class Node {
         int value;
         Node next;
         Node prev;
 
-        Node(int value){
+        Node(int value) {
             this.value = value;
         }
 

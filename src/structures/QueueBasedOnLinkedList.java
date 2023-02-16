@@ -1,5 +1,7 @@
 package structures;
 
+import java.util.Stack;
+
 /**
  * @author Odilov_Zafarjon
  * @link https://t.me/zafarzhon_odilov

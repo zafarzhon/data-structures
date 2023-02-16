@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 public final class QueueBasedOnArray extends BasedOnArrayDataStorage {
 
-    public QueueBasedOnArray(int size){
+    public QueueBasedOnArray(int size) {
         super(size);
     }
 
@@ -18,12 +18,12 @@ public final class QueueBasedOnArray extends BasedOnArrayDataStorage {
 
     @Override
     public int get() {
-        if(size>0){
+        if (size > 0) {
             int res = array[0];
-            System.arraycopy(array,1,array,0,array.length-1);
+            System.arraycopy(array, 1, array, 0, array.length - 1);
             size--;
             return res;
-        }else{
+        } else {
             throw new ArrayStoreException();
         }
     }
