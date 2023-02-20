@@ -2,9 +2,9 @@ package structuresWithGenerics.impl;
 
 import structuresWithGenerics.MyStack;
 
-import java.util.ArrayList;
+
 import java.util.Iterator;
-import java.util.Stack;
+import java.util.NoSuchElementException;
 
 /**
  * @author Odilov_Zafarjon
@@ -12,10 +12,8 @@ import java.util.Stack;
  */
 public class MyStackImpl<E> implements MyStack<E>{
 
-
     private Object[] elementData;
     private int size;
-    //ArrayList
 
     public MyStackImpl(int size){
         if(size>0){
@@ -59,5 +57,36 @@ public class MyStackImpl<E> implements MyStack<E>{
         if(elementData.length==getSize()) grow(elementData.length*2);
         elementData[getSize()] = data;
         setSize(getSize()+1);
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new MyIterator();
+    }
+
+    private class MyIterator implements Iterator<E>{
+
+        int cursor;
+        @Override
+        public boolean hasNext() {
+            return cursor<getSize();
+        }
+
+        @Override
+        public E next() {
+            if(cursor==getSize()) throw new NoSuchElementException();
+            return (E)elementData[cursor++];
+        }
+
+        @Override
+        public void remove() {
+            if(cursor == 0) throw new NoSuchElementException();
+            for(int i = cursor-1;i<getSize()-1;i++){
+                elementData[i] = elementData[i+1];
+            }
+            elementData[getSize()-1] = null;
+            setSize(getSize()-1);
+            cursor--;
+        }
     }
 }
